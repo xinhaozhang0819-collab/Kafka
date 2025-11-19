@@ -21,17 +21,17 @@ services:
       KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
       KAFKA_LOG_DIRS: /var/lib/kafka/data
 
-  postgres:
+  kafka_postgres:
     image: postgres:15
-    container_name: postgres
+    container_name: kafka-postgres
     environment:
       POSTGRES_USER: kafka_user
       POSTGRES_PASSWORD: kafka_password
       POSTGRES_DB: kafka_db
     ports:
-      - "5432:5432"
+      - "5432:5432"  
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - kafka_postgres_data:/var/lib/postgresql/data
 
 volumes:
-  postgres_data:
+  kafka_postgres_data:
